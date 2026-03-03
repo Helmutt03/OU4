@@ -1,0 +1,1 @@
+/usr/bin/cc  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/OU4.dir/src/graph.c.o CMakeFiles/OU4.dir/src/is_connected.c.o CMakeFiles/OU4.dir/src/graph2.c.o CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o CMakeFiles/OU4.dir/src/dlist.c.o CMakeFiles/OU4.dir/src/array_2d.c.o -o OU4
