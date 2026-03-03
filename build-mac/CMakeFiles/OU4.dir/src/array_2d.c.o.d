@@ -1,5 +1,5 @@
 CMakeFiles/OU4.dir/src/array_2d.c.o: \
-  /Users/helmernordstrom/edu/doa/ou4/src/array_2d.c \
+  /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/array_2d.c \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_bounds.h \
@@ -92,6 +92,6 @@ CMakeFiles/OU4.dir/src/array_2d.c.o: \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/__stdarg_va_arg.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/__stdarg___va_copy.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/__stdarg_va_copy.h \
-  /Users/helmernordstrom/edu/doa/ou4/include/array_2d.h \
+  /Users/helmernordstrom/Documents/University/Year1/doa/ou4/include/array_2d.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdbool.h \
-  /Users/helmernordstrom/edu/doa/ou4/include/util.h
+  /Users/helmernordstrom/Documents/University/Year1/doa/ou4/include/util.h

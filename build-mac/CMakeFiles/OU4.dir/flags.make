@@ -4,9 +4,9 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/helmernordstrom/edu/doa/ou4/include
+C_INCLUDES = -I/Users/helmernordstrom/Documents/University/Year1/doa/ou4/include
 
-C_FLAGSarm64 =  -arch arm64 -std=c99 -Wall -Wextra
+C_FLAGSarm64 =  -arch arm64 -std=c99 -Wall -Wextra -g
 
-C_FLAGS =  -arch arm64 -std=c99 -Wall -Wextra
+C_FLAGS =  -arch arm64 -std=c99 -Wall -Wextra -g
 

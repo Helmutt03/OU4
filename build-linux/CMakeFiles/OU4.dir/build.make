@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/helmernordstrom/edu/doa/ou4
+CMAKE_SOURCE_DIR = /Users/helmernordstrom/Documents/University/Year1/doa/ou4
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/helmernordstrom/edu/doa/ou4/build-linux
+CMAKE_BINARY_DIR = /Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OU4.dir/depend.make
@@ -73,88 +73,88 @@ CMakeFiles/OU4.dir/codegen:
 .PHONY : CMakeFiles/OU4.dir/codegen
 
 CMakeFiles/OU4.dir/src/graph.c.o: CMakeFiles/OU4.dir/flags.make
-CMakeFiles/OU4.dir/src/graph.c.o: /Users/helmernordstrom/edu/doa/ou4/src/graph.c
+CMakeFiles/OU4.dir/src/graph.c.o: /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph.c
 CMakeFiles/OU4.dir/src/graph.c.o: CMakeFiles/OU4.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/edu/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/OU4.dir/src/graph.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/graph.c.o -MF CMakeFiles/OU4.dir/src/graph.c.o.d -o CMakeFiles/OU4.dir/src/graph.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/graph.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/OU4.dir/src/graph.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/graph.c.o -MF CMakeFiles/OU4.dir/src/graph.c.o.d -o CMakeFiles/OU4.dir/src/graph.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph.c
 
 CMakeFiles/OU4.dir/src/graph.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/OU4.dir/src/graph.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/edu/doa/ou4/src/graph.c > CMakeFiles/OU4.dir/src/graph.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph.c > CMakeFiles/OU4.dir/src/graph.c.i
 
 CMakeFiles/OU4.dir/src/graph.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/OU4.dir/src/graph.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/edu/doa/ou4/src/graph.c -o CMakeFiles/OU4.dir/src/graph.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph.c -o CMakeFiles/OU4.dir/src/graph.c.s
 
 CMakeFiles/OU4.dir/src/is_connected.c.o: CMakeFiles/OU4.dir/flags.make
-CMakeFiles/OU4.dir/src/is_connected.c.o: /Users/helmernordstrom/edu/doa/ou4/src/is_connected.c
+CMakeFiles/OU4.dir/src/is_connected.c.o: /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected.c
 CMakeFiles/OU4.dir/src/is_connected.c.o: CMakeFiles/OU4.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/edu/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/OU4.dir/src/is_connected.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/is_connected.c.o -MF CMakeFiles/OU4.dir/src/is_connected.c.o.d -o CMakeFiles/OU4.dir/src/is_connected.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/is_connected.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/OU4.dir/src/is_connected.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/is_connected.c.o -MF CMakeFiles/OU4.dir/src/is_connected.c.o.d -o CMakeFiles/OU4.dir/src/is_connected.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected.c
 
 CMakeFiles/OU4.dir/src/is_connected.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/OU4.dir/src/is_connected.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/edu/doa/ou4/src/is_connected.c > CMakeFiles/OU4.dir/src/is_connected.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected.c > CMakeFiles/OU4.dir/src/is_connected.c.i
 
 CMakeFiles/OU4.dir/src/is_connected.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/OU4.dir/src/is_connected.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/edu/doa/ou4/src/is_connected.c -o CMakeFiles/OU4.dir/src/is_connected.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected.c -o CMakeFiles/OU4.dir/src/is_connected.c.s
 
 CMakeFiles/OU4.dir/src/graph2.c.o: CMakeFiles/OU4.dir/flags.make
-CMakeFiles/OU4.dir/src/graph2.c.o: /Users/helmernordstrom/edu/doa/ou4/src/graph2.c
+CMakeFiles/OU4.dir/src/graph2.c.o: /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph2.c
 CMakeFiles/OU4.dir/src/graph2.c.o: CMakeFiles/OU4.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/edu/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/OU4.dir/src/graph2.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/graph2.c.o -MF CMakeFiles/OU4.dir/src/graph2.c.o.d -o CMakeFiles/OU4.dir/src/graph2.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/graph2.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/OU4.dir/src/graph2.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/graph2.c.o -MF CMakeFiles/OU4.dir/src/graph2.c.o.d -o CMakeFiles/OU4.dir/src/graph2.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph2.c
 
 CMakeFiles/OU4.dir/src/graph2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/OU4.dir/src/graph2.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/edu/doa/ou4/src/graph2.c > CMakeFiles/OU4.dir/src/graph2.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph2.c > CMakeFiles/OU4.dir/src/graph2.c.i
 
 CMakeFiles/OU4.dir/src/graph2.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/OU4.dir/src/graph2.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/edu/doa/ou4/src/graph2.c -o CMakeFiles/OU4.dir/src/graph2.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph2.c -o CMakeFiles/OU4.dir/src/graph2.c.s
 
 CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o: CMakeFiles/OU4.dir/flags.make
-CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o: /Users/helmernordstrom/edu/doa/ou4/src/is_connected_help_functions_1.c
+CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o: /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected_help_functions_1.c
 CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o: CMakeFiles/OU4.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/edu/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o -MF CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o.d -o CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/is_connected_help_functions_1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o -MF CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o.d -o CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected_help_functions_1.c
 
 CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/edu/doa/ou4/src/is_connected_help_functions_1.c > CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected_help_functions_1.c > CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.i
 
 CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/edu/doa/ou4/src/is_connected_help_functions_1.c -o CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected_help_functions_1.c -o CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.s
 
 CMakeFiles/OU4.dir/src/dlist.c.o: CMakeFiles/OU4.dir/flags.make
-CMakeFiles/OU4.dir/src/dlist.c.o: /Users/helmernordstrom/edu/doa/ou4/src/dlist.c
+CMakeFiles/OU4.dir/src/dlist.c.o: /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/dlist.c
 CMakeFiles/OU4.dir/src/dlist.c.o: CMakeFiles/OU4.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/edu/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/OU4.dir/src/dlist.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/dlist.c.o -MF CMakeFiles/OU4.dir/src/dlist.c.o.d -o CMakeFiles/OU4.dir/src/dlist.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/dlist.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/OU4.dir/src/dlist.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/dlist.c.o -MF CMakeFiles/OU4.dir/src/dlist.c.o.d -o CMakeFiles/OU4.dir/src/dlist.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/dlist.c
 
 CMakeFiles/OU4.dir/src/dlist.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/OU4.dir/src/dlist.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/edu/doa/ou4/src/dlist.c > CMakeFiles/OU4.dir/src/dlist.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/dlist.c > CMakeFiles/OU4.dir/src/dlist.c.i
 
 CMakeFiles/OU4.dir/src/dlist.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/OU4.dir/src/dlist.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/edu/doa/ou4/src/dlist.c -o CMakeFiles/OU4.dir/src/dlist.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/dlist.c -o CMakeFiles/OU4.dir/src/dlist.c.s
 
 CMakeFiles/OU4.dir/src/array_2d.c.o: CMakeFiles/OU4.dir/flags.make
-CMakeFiles/OU4.dir/src/array_2d.c.o: /Users/helmernordstrom/edu/doa/ou4/src/array_2d.c
+CMakeFiles/OU4.dir/src/array_2d.c.o: /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/array_2d.c
 CMakeFiles/OU4.dir/src/array_2d.c.o: CMakeFiles/OU4.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/edu/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/OU4.dir/src/array_2d.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/array_2d.c.o -MF CMakeFiles/OU4.dir/src/array_2d.c.o.d -o CMakeFiles/OU4.dir/src/array_2d.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/array_2d.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/OU4.dir/src/array_2d.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/OU4.dir/src/array_2d.c.o -MF CMakeFiles/OU4.dir/src/array_2d.c.o.d -o CMakeFiles/OU4.dir/src/array_2d.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/array_2d.c
 
 CMakeFiles/OU4.dir/src/array_2d.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/OU4.dir/src/array_2d.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/edu/doa/ou4/src/array_2d.c > CMakeFiles/OU4.dir/src/array_2d.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/array_2d.c > CMakeFiles/OU4.dir/src/array_2d.c.i
 
 CMakeFiles/OU4.dir/src/array_2d.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/OU4.dir/src/array_2d.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/edu/doa/ou4/src/array_2d.c -o CMakeFiles/OU4.dir/src/array_2d.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/array_2d.c -o CMakeFiles/OU4.dir/src/array_2d.c.s
 
 # Object files for target OU4
 OU4_OBJECTS = \
@@ -176,8 +176,10 @@ OU4: CMakeFiles/OU4.dir/src/dlist.c.o
 OU4: CMakeFiles/OU4.dir/src/array_2d.c.o
 OU4: CMakeFiles/OU4.dir/build.make
 OU4: CMakeFiles/OU4.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/helmernordstrom/edu/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable OU4"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable OU4"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OU4.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "Generating dSYM bundle for debugging"
+	dsymutil /Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux/OU4 -o /Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux/OU4.dSYM
 
 # Rule to build all files generated by this target.
 CMakeFiles/OU4.dir/build: OU4
@@ -188,6 +190,6 @@ CMakeFiles/OU4.dir/clean:
 .PHONY : CMakeFiles/OU4.dir/clean
 
 CMakeFiles/OU4.dir/depend:
-	cd /Users/helmernordstrom/edu/doa/ou4/build-linux && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/helmernordstrom/edu/doa/ou4 /Users/helmernordstrom/edu/doa/ou4 /Users/helmernordstrom/edu/doa/ou4/build-linux /Users/helmernordstrom/edu/doa/ou4/build-linux /Users/helmernordstrom/edu/doa/ou4/build-linux/CMakeFiles/OU4.dir/DependInfo.cmake "--color=$(COLOR)" OU4
+	cd /Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/helmernordstrom/Documents/University/Year1/doa/ou4 /Users/helmernordstrom/Documents/University/Year1/doa/ou4 /Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux /Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux /Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-linux/CMakeFiles/OU4.dir/DependInfo.cmake "--color=$(COLOR)" OU4
 .PHONY : CMakeFiles/OU4.dir/depend
 

@@ -1,38 +1,38 @@
 [
 {
-  "directory": "/Users/helmernordstrom/edu/doa/ou4/build-mac",
-  "command": "/usr/bin/cc  -I/Users/helmernordstrom/edu/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -o CMakeFiles/OU4.dir/src/graph.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/graph.c",
-  "file": "/Users/helmernordstrom/edu/doa/ou4/src/graph.c",
+  "directory": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac",
+  "command": "/usr/bin/cc  -I/Users/helmernordstrom/Documents/University/Year1/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -g -o CMakeFiles/OU4.dir/src/graph.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph.c",
+  "file": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph.c",
   "output": "CMakeFiles/OU4.dir/src/graph.c.o"
 },
 {
-  "directory": "/Users/helmernordstrom/edu/doa/ou4/build-mac",
-  "command": "/usr/bin/cc  -I/Users/helmernordstrom/edu/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -o CMakeFiles/OU4.dir/src/is_connected.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/is_connected.c",
-  "file": "/Users/helmernordstrom/edu/doa/ou4/src/is_connected.c",
+  "directory": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac",
+  "command": "/usr/bin/cc  -I/Users/helmernordstrom/Documents/University/Year1/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -g -o CMakeFiles/OU4.dir/src/is_connected.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected.c",
+  "file": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected.c",
   "output": "CMakeFiles/OU4.dir/src/is_connected.c.o"
 },
 {
-  "directory": "/Users/helmernordstrom/edu/doa/ou4/build-mac",
-  "command": "/usr/bin/cc  -I/Users/helmernordstrom/edu/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -o CMakeFiles/OU4.dir/src/graph2.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/graph2.c",
-  "file": "/Users/helmernordstrom/edu/doa/ou4/src/graph2.c",
+  "directory": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac",
+  "command": "/usr/bin/cc  -I/Users/helmernordstrom/Documents/University/Year1/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -g -o CMakeFiles/OU4.dir/src/graph2.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph2.c",
+  "file": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/graph2.c",
   "output": "CMakeFiles/OU4.dir/src/graph2.c.o"
 },
 {
-  "directory": "/Users/helmernordstrom/edu/doa/ou4/build-mac",
-  "command": "/usr/bin/cc  -I/Users/helmernordstrom/edu/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -o CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/is_connected_help_functions_1.c",
-  "file": "/Users/helmernordstrom/edu/doa/ou4/src/is_connected_help_functions_1.c",
+  "directory": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac",
+  "command": "/usr/bin/cc  -I/Users/helmernordstrom/Documents/University/Year1/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -g -o CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected_help_functions_1.c",
+  "file": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected_help_functions_1.c",
   "output": "CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o"
 },
 {
-  "directory": "/Users/helmernordstrom/edu/doa/ou4/build-mac",
-  "command": "/usr/bin/cc  -I/Users/helmernordstrom/edu/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -o CMakeFiles/OU4.dir/src/dlist.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/dlist.c",
-  "file": "/Users/helmernordstrom/edu/doa/ou4/src/dlist.c",
+  "directory": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac",
+  "command": "/usr/bin/cc  -I/Users/helmernordstrom/Documents/University/Year1/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -g -o CMakeFiles/OU4.dir/src/dlist.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/dlist.c",
+  "file": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/dlist.c",
   "output": "CMakeFiles/OU4.dir/src/dlist.c.o"
 },
 {
-  "directory": "/Users/helmernordstrom/edu/doa/ou4/build-mac",
-  "command": "/usr/bin/cc  -I/Users/helmernordstrom/edu/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -o CMakeFiles/OU4.dir/src/array_2d.c.o -c /Users/helmernordstrom/edu/doa/ou4/src/array_2d.c",
-  "file": "/Users/helmernordstrom/edu/doa/ou4/src/array_2d.c",
+  "directory": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac",
+  "command": "/usr/bin/cc  -I/Users/helmernordstrom/Documents/University/Year1/doa/ou4/include  -arch arm64 -std=c99 -Wall -Wextra -g -o CMakeFiles/OU4.dir/src/array_2d.c.o -c /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/array_2d.c",
+  "file": "/Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/array_2d.c",
   "output": "CMakeFiles/OU4.dir/src/array_2d.c.o"
 }
 ]

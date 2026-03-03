@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac/OU4'
+relocations:     []
+...
