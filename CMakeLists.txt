@@ -6,6 +6,13 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_executable(OU4)
 
+target_compile_options(OU4
+        PRIVATE
+            -std=c99
+            -Wall
+            -Wextra
+            )
+
 target_sources(OU4
         PRIVATE
             src/graph.c

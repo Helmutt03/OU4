@@ -6,7 +6,7 @@ C_DEFINES =
 
 C_INCLUDES = -I/Users/helmernordstrom/edu/doa/ou4/include
 
-C_FLAGSarm64 =  -arch arm64
+C_FLAGSarm64 =  -arch arm64 -std=c99 -Wall -Wextra
 
-C_FLAGS =  -arch arm64
+C_FLAGS =  -arch arm64 -std=c99 -Wall -Wextra
 
