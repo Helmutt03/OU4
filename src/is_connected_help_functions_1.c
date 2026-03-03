@@ -12,22 +12,22 @@
  * @param s - string to search.
  * @return int - Returns the position of the first non-whitespace character, or -1 if not found.
  */
-int first_non_white_space(const char *s)
-{
-    int i = 0; // Start at first char.
+int first_non_white_space(const char* s) {
+	int i = 0; // Start at first char.
 
-    // Advance as long as we're loooking at white-space until we hit EOL.
-    while (s[i] && isspace(s[i])) {
-        i++;
-    }
-    // We found a non-whitespace char.
-    if (s[i]) {
-        // It was a proper characted. Return its position.
-        return i;
-    } else {
-        // It was the null terminator. Return fail.
-        return -1;
-    }
+	// Advance as long as we're loooking at white-space until we hit EOL.
+	while (s[i] && isspace(s[i])) {
+		i++;
+	}
+	// We found a non-whitespace char.
+	if (s[i]) {
+		// It was a proper characted. Return its position.
+		return i;
+	}
+	else {
+		// It was the null terminator. Return fail.
+		return -1;
+	}
 }
 
 /**
@@ -38,10 +38,9 @@ int first_non_white_space(const char *s)
  * @return false if the line contains at least one non-whitespace char.
  */
 
-bool line_is_blank(const char *s)
-{
-    // Line is blank if it only contained white-space chars.
-    return first_non_white_space(s) < 0;
+bool line_is_blank(const char* s) {
+	// Line is blank if it only contained white-space chars.
+	return first_non_white_space(s) < 0;
 }
 
 /**
@@ -53,10 +52,9 @@ bool line_is_blank(const char *s)
  *
  * A comment line has a hash sign '#' as the first non-whitespace char on the line.
  */
-bool line_is_comment(const char *s)
-{
-    int i = first_non_white_space(s);
-    return (i >= 0 && s[i] == '#');
+bool line_is_comment(const char* s) {
+	int i = first_non_white_space(s);
+	return (i >= 0 && s[i] == '#');
 }
 
 /**
@@ -69,20 +67,19 @@ bool line_is_comment(const char *s)
  * and n2 contain node names. If the return value is less than 2, parsing of at least one node name
  * failed, in which case the content of n1 and n2 are undefined.
  */
-int parse_map_line(const char *buf, char *n1, char *n2)
-{
-    // Create a format string the will do the work.
-    char fmt[20];
-    // This will generate the format string " %40s %40s" if MAXNODENAME is 40.
-    snprintf(fmt, sizeof(fmt), " %%%ds %%%ds", MAXNODENAME, MAXNODENAME);
+int parse_map_line(const char* buf, char* n1, char* n2) {
+	// Create a format string the will do the work.
+	char fmt[20];
+	// This will generate the format string " %40s %40s" if MAXNODENAME is 40.
+	snprintf(fmt, sizeof(fmt), " %%%ds %%%ds", MAXNODENAME, MAXNODENAME);
 
-    // sscanf does all the necessary parsing.
-    // Node names must be separated by whitespace.
-    // Whitespace before the first node name is allowed.
-    // Anything after the second node name is ignored.
-    int n = sscanf(buf, fmt, n1, n2);
+	// sscanf does all the necessary parsing.
+	// Node names must be separated by whitespace.
+	// Whitespace before the first node name is allowed.
+	// Anything after the second node name is ignored.
+	int n = sscanf(buf, fmt, n1, n2);
 
-    // The return value from sscanf contains the number of properly parsed format codes, i.e. the
-    // number of node names.
-    return n;
+	// The return value from sscanf contains the number of properly parsed format codes, i.e. the
+	// number of node names.
+	return n;
 }
