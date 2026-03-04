@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.1)
+cmake_minimum_required(VERSION 3.31)
 project(OU4)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_executable(OU4)
