@@ -17,6 +17,7 @@ target_sources(OU4
             src/is_connected_help_functions_1.c
             src/dlist.c
             src/array_2d.c
+            src/array_1d.c
             )
 target_include_directories(OU4
         PRIVATE

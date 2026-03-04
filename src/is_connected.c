@@ -11,7 +11,6 @@ bool find_path(graph* g, node* src, node* dest);
 int main(int argc, char* argv[]) {
 
 	printf("%d\n", argc);
-	printf("%s\n", argv[1]);
 
 	FILE* map_data = NULL;
 	check_params(argc, argv, &map_data);
@@ -44,6 +43,7 @@ graph* load_graph(FILE* map_data) {
 
 	char string[100];
 
+
 	fgets(string, 99, map_data);
 	printf("%s\n", string);
 
@@ -51,5 +51,6 @@ graph* load_graph(FILE* map_data) {
 }
 
 bool find_Path(graph* g, node* src, node* dest) {
+
 	return true;
 }
