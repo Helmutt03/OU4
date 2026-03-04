@@ -1,12 +1,49 @@
 #include <stdio.h>
-int main() {
+#include <stdlib.h>
 
-	int x;
-	int y;
-	x = 5;
-	y = 10;
-	printf("Test , test, test\n");
-	printf("%d\n%d\n", x, y);
+#include <graph.h>
+
+void check_params(int argc, char* argv[], FILE** map_data);
+graph* load_graph(FILE* map_data);
+bool find_path(graph* g, node* src, node* dest);
+
+
+int main(int argc, char* argv[]) {
+
+	printf("%d\n", argc);
+	printf("%s\n", argv[1]);
+
+	FILE* map_data = NULL;
+	check_params(argc, argv, &map_data);
+
+	char string[100];
+	fgets(string, 99, map_data);
+	printf("%s\n", string);
+
+	fclose(map_data);
 
 	return 0;
+}
+
+void check_params(int argc, char* argv[], FILE** map_data) {
+
+	if (argc != 2) {
+		printf("Please input correct file\n");
+		exit(EXIT_FAILURE);
+	}
+
+	*map_data = fopen(argv[1], "r");
+	if (map_data == NULL) {
+		fprintf(stderr, "Could not open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+}
+
+graph* load_graph(FILE* map_data) {
+	graph* g = NULL;
+	return g;
+}
+
+bool find_Path(graph* g, node* src, node* dest) {
+	return true;
 }

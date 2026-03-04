@@ -1,5 +1,5 @@
 CMakeFiles/OU4.dir/src/is_connected_help_functions_1.c.o: \
-  /Users/helmernordstrom/Documents/University/Year1/doa/ou4/src/is_connected_help_functions_1.c \
+  /Users/helmernordstrom/edu/doa/ou4/src/is_connected_help_functions_1.c \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/_bounds.h \

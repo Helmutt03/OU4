@@ -1,3 +1,3 @@
-/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac/CMakeFiles/OU4.dir
-/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac/CMakeFiles/edit_cache.dir
-/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac/CMakeFiles/rebuild_cache.dir
+/Users/helmernordstrom/edu/doa/ou4/build-mac/CMakeFiles/OU4.dir
+/Users/helmernordstrom/edu/doa/ou4/build-mac/CMakeFiles/edit_cache.dir
+/Users/helmernordstrom/edu/doa/ou4/build-mac/CMakeFiles/rebuild_cache.dir

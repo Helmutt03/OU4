@@ -23,7 +23,7 @@
  *                     from the codebase to use "" to handle case when
  *                     student stores all header files in the current
  *                     directory. See
- *                     https://stackoverflow.com/questions/21593/what-is-the-difference-between-include-filename-and-include-filename.
+ * https://stackoverflow.com/questions/21593/what-is-the-difference-between-include-filename-and-include-filename.
  *   v1.02 2019-03-01: Doc update in graph_node_is_seen().
  *   v1.1  2019-03-06: Changed several const node * to node *.
  *                     Fixed doc bug to state that any dynamic memory allocated
@@ -46,7 +46,7 @@ typedef struct graph graph;
  * Returns: true if the nodes are considered equal, otherwise false.
  *
  */
-bool nodes_are_equal(const node *n1,const node *n2);
+bool nodes_are_equal(const node* n1, const node* n2);
 
 // =================== GRAPH STRUCTURE INTERFACE ======================
 
@@ -56,7 +56,7 @@ bool nodes_are_equal(const node *n1,const node *n2);
  *
  * Returns: A pointer to the new graph.
  */
-graph *graph_empty(int max_nodes);
+graph* graph_empty(int max_nodes);
 
 /**
  * graph_is_empty() - Check if a graph is empty, i.e. has no nodes.
@@ -64,7 +64,7 @@ graph *graph_empty(int max_nodes);
  *
  * Returns: True if graph is empty, otherwise false.
  */
-bool graph_is_empty(const graph *g);
+bool graph_is_empty(const graph* g);
 
 /**
  * graph_has_edges() - Check if a graph has any edges.
@@ -72,7 +72,7 @@ bool graph_is_empty(const graph *g);
  *
  * Returns: True if graph has any edges, otherwise false.
  */
-bool graph_has_edges(const graph *g);
+bool graph_has_edges(const graph* g);
 
 /**
  * graph_insert_node() - Inserts a node with the given name into the graph.
@@ -84,7 +84,7 @@ bool graph_has_edges(const graph *g);
  *
  * Returns: The modified graph.
  */
-graph *graph_insert_node(graph *g, const char *s);
+graph* graph_insert_node(graph* g, const char* s);
 
 /**
  * graph_find_node() - Find a node stored in the graph.
@@ -93,7 +93,7 @@ graph *graph_insert_node(graph *g, const char *s);
  *
  * Returns: A pointer to the found node, or NULL.
  */
-node *graph_find_node(const graph *g, const char *s);
+node* graph_find_node(const graph* g, const char* s);
 
 /**
  * graph_node_is_seen() - Return the seen status for a node.
@@ -102,7 +102,7 @@ node *graph_find_node(const graph *g, const char *s);
  *
  * Returns: The seen status for the node.
  */
-bool graph_node_is_seen(const graph *g, const node *n);
+bool graph_node_is_seen(const graph* g, const node* n);
 
 /**
  * graph_node_set_seen() - Set the seen status for a node.
@@ -112,7 +112,7 @@ bool graph_node_is_seen(const graph *g, const node *n);
  *
  * Returns: The modified graph.
  */
-graph *graph_node_set_seen(graph *g, node *n, bool seen);
+graph* graph_node_set_seen(graph* g, node* n, bool seen);
 
 /**
  * graph_reset_seen() - Reset the seen status on all nodes in the graph.
@@ -120,7 +120,7 @@ graph *graph_node_set_seen(graph *g, node *n, bool seen);
  *
  * Returns: The modified graph.
  */
-graph *graph_reset_seen(graph *g);
+graph* graph_reset_seen(graph* g);
 
 /**
  * graph_insert_edge() - Insert an edge into the graph.
@@ -132,7 +132,7 @@ graph *graph_reset_seen(graph *g);
  *
  * Returns: The modified graph.
  */
-graph *graph_insert_edge(graph *g, node *n1, node *n2);
+graph* graph_insert_edge(graph* g, node* n1, node* n2);
 
 /**
  * graph_delete_node() - Remove a node from the graph.
@@ -143,7 +143,7 @@ graph *graph_insert_edge(graph *g, node *n1, node *n2);
  *
  * NOTE: Undefined if the node is not in the graph.
  */
-graph *graph_delete_node(graph *g, node *n);
+graph* graph_delete_node(graph* g, node* n);
 
 /**
  * graph_delete_edge() - Remove an edge from the graph.
@@ -155,7 +155,7 @@ graph *graph_delete_node(graph *g, node *n);
  *
  * NOTE: Undefined if the edge is not in the graph.
  */
-graph *graph_delete_edge(graph *g, node *n1, node *n2);
+graph* graph_delete_edge(graph* g, node* n1, node* n2);
 
 /**
  * graph_choose_node() - Return an arbitrary node from the graph.
@@ -165,7 +165,7 @@ graph *graph_delete_edge(graph *g, node *n1, node *n2);
  *
  * NOTE: The return value is undefined for an empty graph.
  */
-node *graph_choose_node(const graph *g);
+node* graph_choose_node(const graph* g);
 
 /**
  * graph_neighbours() - Return a list of neighbour nodes.
@@ -175,7 +175,7 @@ node *graph_choose_node(const graph *g);
  * Returns: A pointer to a list of nodes. Note: The list must be
  * dlist_kill()-ed after use.
  */
-dlist *graph_neighbours(const graph *g,const node *n);
+dlist* graph_neighbours(const graph* g, const node* n);
 
 /**
  * graph_kill() - Destroy a given graph.
@@ -185,7 +185,7 @@ dlist *graph_neighbours(const graph *g,const node *n);
  *
  * Returns: Nothing.
  */
-void graph_kill(graph *g);
+void graph_kill(graph* g);
 
 /**
  * graph_print() - Iterate over the graph elements and print their values.
@@ -195,6 +195,6 @@ void graph_kill(graph *g);
  *
  * Returns: Nothing.
  */
-void graph_print(const graph *g);
+void graph_print(const graph* g);
 
 #endif

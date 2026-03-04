@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/Users/helmernordstrom/Documents/University/Year1/doa/ou4/build-mac/cmake_install.cmake"
+		"/Users/helmernordstrom/edu/doa/ou4/build-mac/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

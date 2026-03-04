@@ -44,7 +44,7 @@ bool line_is_blank(const char* s) {
 }
 
 /**
- * @brief Determina if the string is a comment line.
+ * @brief Determine if the string is a comment line.
  *
  * @param s - string to search.
  * @return true if the line is a comment line.
@@ -68,7 +68,7 @@ bool line_is_comment(const char* s) {
  * failed, in which case the content of n1 and n2 are undefined.
  */
 int parse_map_line(const char* buf, char* n1, char* n2) {
-	// Create a format string the will do the work.
+	// Create a format string that will do the work.
 	char fmt[20];
 	// This will generate the format string " %40s %40s" if MAXNODENAME is 40.
 	snprintf(fmt, sizeof(fmt), " %%%ds %%%ds", MAXNODENAME, MAXNODENAME);
