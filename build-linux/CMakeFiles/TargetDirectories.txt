@@ -1,3 +1,0 @@
-/home/ottos/Dokument/Uni/DOA/OU4/build-linux/CMakeFiles/OU4.dir
-/home/ottos/Dokument/Uni/DOA/OU4/build-linux/CMakeFiles/edit_cache.dir
-/home/ottos/Dokument/Uni/DOA/OU4/build-linux/CMakeFiles/rebuild_cache.dir

@@ -41,9 +41,14 @@ void check_params(int argc, char* argv[], FILE** map_data) {
 
 graph* load_graph(FILE* map_data) {
 	graph* g = NULL;
+
 	char string[100];
+
+	while (fgets()) {
+	}
 	fgets(string, 99, map_data);
 	printf("%s\n", string);
+
 	return g;
 }
 
