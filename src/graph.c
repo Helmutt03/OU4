@@ -100,6 +100,7 @@ graph* graph_insert_node(graph* g, const char* s)
 
 	// Add the node to the last available index
 	array_1d_set_value(g->nodes, n, g->node_count);
+	g->node_count++;
 
 	return g;
 }
@@ -128,4 +129,94 @@ graph* graph_node_set_seen(graph* g, node* n, bool seen)
 {
 	n->is_seen = seen;
 	return g;
+}
+
+graph* graph_reset_seen(graph* g)
+{
+	for (int i = 0; i < g->node_count; i++)
+	{
+		node *n = array_1d_inspect_value(g->nodes, i);
+
+		n->is_seen = false;
+	}
+	
+	return g;
+}
+
+graph* graph_insert_edge(graph* g, node* n1, node* n2)
+{
+	// Indexes in the array for the nodes, -1 if not found
+	int i1 = -1, i2 = -1;
+	// Search the graph
+	for (int i = 0; i < g->node_count; i++)
+	{
+		node *g_node = array_1d_inspect_value(g->nodes, i);
+
+		if (nodes_are_equal(n1, g_node)){
+			i1 = i;
+		}
+		else if (nodes_are_equal(n2, g_node)){
+			i2 = i;
+		}
+		
+	}
+
+	// Do nothing if n1 or n2 are not found in the graph
+	if(i1 == -1 || i2 == -1){
+		fprintf(stderr, "One or more node not found, graph is not changed.\n");
+		return g;
+	}
+
+	// Allocate an integer
+	int *edge = malloc(sizeof(*edge));
+	*edge = 1;
+
+	// Insert the edge
+	array_2d_set_value(g->neighbour_graph, edge, i1, i2);
+	g->edge_count++;
+	return g;
+}
+
+dlist* graph_neighbours(const graph* g, const node* n)
+{
+	// Find the node index, -1 is not found
+	int node_index = -1;
+	for (int i = 0; i < g->node_count; i++)
+	{
+		node *g_node = array_1d_inspect_value(g->nodes, i);
+		if(nodes_are_equal(n, g_node)){
+			node_index = i;
+			// Finish the loop
+			i = g->node_count;
+		}
+	}
+
+	
+	if(node_index == -1){
+		fprintf(stderr, "Node not found, returning NULL");
+		return NULL;
+	}
+	dlist *neighbours = dlist_empty(node_kill);
+
+	for (int i = 0; i < g->node_count; i++)
+	{
+		int *is_neighbour = array_2d_inspect_value(g->neighbour_graph, node_index, i);
+		if (is_neighbour != NULL && *is_neighbour == 1)
+		{
+			node *n = array_1d_inspect_value(g->nodes, i);
+			// Insert to first pos for simplicity
+			dlist_insert(neighbours, n, dlist_first(neighbours));
+		}
+		
+	}
+	return neighbours;
+	
+}
+
+void graph_kill(graph* g)
+{
+	array_1d_kill(g->nodes);
+	array_2d_kill(g->neighbour_graph);
+
+	free(g);
 }
