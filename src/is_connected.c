@@ -4,12 +4,14 @@
 #include <stdbool.h>
 
 #include <graph.h>
+#include <string.h>
 
 #define MAXNODENAME 40
 #define BUFSIZE 400
 
 void check_params(int argc, char *argv[], FILE **map_data);
-graph *load_graph(FILE *map_data, graph *g);
+graph *load_graph(FILE *map_data);
+int get_num_of_routes(FILE *map_data);
 bool find_path(graph *g, node *src, node *dest);
 
 // Helper functions
@@ -21,13 +23,43 @@ int parse_map_line(const char *buf, char *n1, char *n2);
 
 int main(int argc, char *argv[]) {
 
+	// Get the map data
 	FILE *map_data = NULL;
 	check_params(argc, argv, &map_data);
 
+	// load the graph structure with all routes
+	graph *g = load_graph(map_data);
 
-	graph *g = NULL;
-	g = load_graph(map_data, g);
+	int quit = 0;
+	char *buf = malloc(BUFSIZE * sizeof(*buf));
+	char *n1 = malloc(MAXNODENAME * sizeof(*n1));
+	char *n2 = malloc(MAXNODENAME * sizeof(*n1));
+	node *src = NULL;
+	node *dest = NULL;
 
+	while (quit == 0) {
+
+		printf("Enter origin and destination (quit to exit): ");
+
+		fgets(buf, BUFSIZE, stdin);
+		if (strncmp("quit", buf, 4) == 0) {
+			quit = 1;
+		}
+		else {
+			parse_map_line(buf, n1, n2);
+
+			if ((src = graph_find_node(g, n1)) == NULL) {
+				fprintf(stderr, "%s isn't a supported airport\n", n1);
+			}
+			if ((dest = graph_find_node(g, n2)) == NULL) {
+				fprintf(stderr, "%s isn't a supported airport\n", n2);
+			}
+		}
+	}
+
+	free(n1);
+	free(n2);
+	free(buf);
 	free(g);
 	fclose(map_data);
 
@@ -48,28 +80,58 @@ void check_params(int argc, char *argv[], FILE **map_data) {
 	}
 }
 
-graph *load_graph(FILE *map_data, graph *g) {
+graph *load_graph(FILE *map_data) {
 
+
+	// get the amount of routes to be loaded into the graph
+	int num_of_routes = get_num_of_routes(map_data);
+
+	graph *g = graph_empty(num_of_routes * 2);
+
+	char *buf = malloc(BUFSIZE * sizeof(*buf));
+	char *n1 = malloc(MAXNODENAME * sizeof(*n1));
+	char *n2 = malloc(MAXNODENAME * sizeof(*n2));
+
+	for (int i = 1; i <= num_of_routes; i++) {
+		if (fgets(buf, BUFSIZE, map_data) == NULL) {
+			fprintf(stderr, "something wrong...\n");
+			exit(EXIT_FAILURE);
+		}
+
+		parse_map_line(buf, n1, n2);
+		printf("%s-%s\n", n1, n2);
+
+		g = graph_insert_node(g, n1);
+		g = graph_insert_node(g, n2);
+		g = graph_insert_edge(g, graph_find_node(g, n1), graph_find_node(g, n2));
+	}
+
+	free(buf);
+	free(n1);
+	free(n2);
+	return g;
+}
+
+int get_num_of_routes(FILE *map_data) {
+	// We assume that there will be no blank space before the number,
 	char string[100];
+	int num = 0;
 
-	int num_of_routes = 0;
-
-
-	// make a seperate function
-	// gives the num of routes
-	while (num_of_routes == 0) {
-		fgets(string, 99, map_data);
+	while (num == 0) {
+		if (fgets(string, BUFSIZE, map_data) == NULL) {
+			fprintf(stderr, "Input file doesnt follow the specification\n");
+			exit(EXIT_FAILURE);
+		}
 
 		// Checks if the first character in the string is a
 		// number representing the number of routes
 		if (string[0] >= '0' && string[0] <= '9') {
-			sscanf(string, "%d", &num_of_routes);
+			sscanf(string, "%d", &num);
 			printf("%s", string);
 		}
 	}
 
-
-	return g;
+	return num;
 }
 
 bool find_Path(graph *g, node *src, node *dest) {

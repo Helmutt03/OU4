@@ -13,7 +13,7 @@ target_sources(OU4
         PRIVATE
             src/graph.c
             src/is_connected.c
-            src/graph2.c
+            #src/graph2.c
             src/dlist.c
             src/array_2d.c
             src/array_1d.c
