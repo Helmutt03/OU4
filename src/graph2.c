@@ -23,14 +23,18 @@ struct graph {
 
 node *create_node(const char *name) {
 	node *n = calloc(1, sizeof(*n));
-	n->name = *name;
+
+    int len = strlen(name);
+    n->name = calloc(len, sizeof(n->name));
+    strncpy(n->name, name, len);
 	n->is_seen = false;
 	n->neighbours = dlist_empty(NULL);
 
 	return n;
 }
 
-void node_kill(node *n) {
+void node_kill(void *p) {
+    node *n = p;
 	free(n->name);
 	dlist_kill(n->neighbours);
 }
@@ -45,7 +49,7 @@ graph *graph_empty(const int max_nodes) {
 	g->amount_of_nodes = 0;
 	g->max_nodes = max_nodes;
 
-	g->nodes = array_1d_create(0, max_nodes, node_kill);
+	g->nodes = array_1d_create(0, max_nodes, NULL);
 
 	return g;
 }
@@ -61,7 +65,7 @@ bool graph_has_edges(const graph *g) {
 graph *graph_insert_node(graph *g, const char *s) {
 	node *n = create_node(s);
 
-	dlist_insert(g->nodes, n, dlist_first(g->nodes));
+	array_1d_set_value(g->nodes, n, g->amount_of_nodes);
 	g->amount_of_nodes++;
 
 	return g;
@@ -98,7 +102,7 @@ graph *graph_reset_seen(graph *g) {
 }
 
 graph *graph_insert_edge(graph *g, node *n1, node *n2) {
-	n1->neighbours = dlist_insert(n1->neighbours, n2, dlist_first(n1->neighbours));
+	dlist_insert(n1->neighbours, n2, dlist_first(n1->neighbours));
 
 	return g;
 }
@@ -117,6 +121,10 @@ dlist *graph_neighbours(const graph *g, const node *n) {
 }
 
 void graph_kill(graph *g) {
+    for (int i = 0; i<g->amount_of_nodes; i++){
+        node *n = array_1d_inspect_value(g->nodes, i);
+        free(n);
+    }
 	array_1d_kill(g->nodes);
 	free(g);
 }

@@ -43,8 +43,7 @@ target_compile_options(OU4_2
 target_sources(OU4_2
         PRIVATE
             src/is_connected.c
-            # src/graph2.c
-            src/graph.c
+            src/graph2.c
             src/dlist.c
             src/array_2d.c
             src/array_1d.c
