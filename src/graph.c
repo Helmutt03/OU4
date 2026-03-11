@@ -85,7 +85,7 @@ graph *graph_insert_node(graph *g, const char *s) {
 		fprintf(stderr, "FAIL: Can't have more than %d nodes in the graph", array_1d_high(g->nodes) + 1);
 		return g;
 	}
-	// Create a new node 
+	// Create a new node
 	node *n = malloc(sizeof(*n));
 
 	// Allocate name string of correct size
@@ -201,4 +201,3 @@ void graph_kill(graph *g) {
 
 	free(g);
 }
-

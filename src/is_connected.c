@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include <graph.h>
-#include <string.h>
+#include <queue.h>
 
 #define MAXNODENAME 40
 #define BUFSIZE 400
@@ -42,17 +43,27 @@ int main(int argc, char *argv[]) {
 		printf("Enter origin and destination (quit to exit): ");
 
 		fgets(buf, BUFSIZE, stdin);
+
 		if (strncmp("quit", buf, 4) == 0) {
 			quit = 1;
+			printf("Normal exit.\n");
 		}
-		else {
-			parse_map_line(buf, n1, n2);
+		else if (parse_map_line(buf, n1, n2) == 2) {
 
-			if ((src = graph_find_node(g, n1)) == NULL) {
-				fprintf(stderr, "%s isn't a supported airport\n", n1);
+			// if one or more of the inputs doesnt exist
+			// dont try to find a path
+			if ((src = graph_find_node(g, n1)) == NULL || (dest = graph_find_node(g, n2)) == NULL) {
+				fprintf(stderr, "Please input correct airports\n\n");
 			}
-			if ((dest = graph_find_node(g, n2)) == NULL) {
-				fprintf(stderr, "%s isn't a supported airport\n", n2);
+			else {
+				if (find_path(g, src, dest)) {
+					printf("There is a path from %s to %s\n\n", n1, n2);
+					graph_reset_seen(g);
+				}
+				else {
+					printf("There is no path from %s to %s\n\n", n1, n2);
+					graph_reset_seen(g);
+				}
 			}
 		}
 	}
@@ -82,10 +93,10 @@ void check_params(int argc, char *argv[], FILE **map_data) {
 
 graph *load_graph(FILE *map_data) {
 
-
 	// get the amount of routes to be loaded into the graph
 	int num_of_routes = get_num_of_routes(map_data);
 
+	// Every route will have two nodes
 	graph *g = graph_empty(num_of_routes * 2);
 
 	char *buf = malloc(BUFSIZE * sizeof(*buf));
@@ -93,16 +104,30 @@ graph *load_graph(FILE *map_data) {
 	char *n2 = malloc(MAXNODENAME * sizeof(*n2));
 
 	for (int i = 1; i <= num_of_routes; i++) {
+
+		// if we reach the EOF early the num_of_routes number was
+		// incorrect and the map file is incorrect
 		if (fgets(buf, BUFSIZE, map_data) == NULL) {
 			fprintf(stderr, "something wrong...\n");
 			exit(EXIT_FAILURE);
 		}
 
+		// Read the current line and extract the route names
 		parse_map_line(buf, n1, n2);
+
+		// debug
 		printf("%s-%s\n", n1, n2);
 
-		g = graph_insert_node(g, n1);
-		g = graph_insert_node(g, n2);
+		// Only add the nodes if they aren't in the graph already
+		if (graph_find_node(g, n1) == NULL) {
+			graph_insert_node(g, n1);
+		}
+		if (graph_find_node(g, n2) == NULL) {
+			g = graph_insert_node(g, n2);
+		}
+
+		// could do this differently and save the pointers above if found so we avoid doing find_node if on or
+		// more of the nodes already are in the graph
 		g = graph_insert_edge(g, graph_find_node(g, n1), graph_find_node(g, n2));
 	}
 
@@ -134,11 +159,45 @@ int get_num_of_routes(FILE *map_data) {
 	return num;
 }
 
-bool find_Path(graph *g, node *src, node *dest) {
+bool find_path(graph *g, node *src, node *dest) {
 
-	return true;
+	if (nodes_are_equal(src, dest)) {
+		return true;
+	}
+
+
+	graph_node_set_seen(g, src, true);
+	queue *q = queue_enqueue(queue_empty(NULL), src);
+	node *n;
+	node *b;
+
+	while (!queue_is_empty(q)) {
+
+		n = queue_front(q);
+		q = queue_dequeue(q);
+
+		// Get its neighbours
+		dlist *neighbours = graph_neighbours(g, n);
+		dlist_pos p = dlist_first(neighbours);
+
+		while (!dlist_is_end(neighbours, p)) {
+			b = dlist_inspect(neighbours, p);
+
+			if (nodes_are_equal(b, dest)) {
+				return true;
+			}
+			else {
+				if (!graph_node_is_seen(g, b)) {
+					graph_node_set_seen(g, b, true);
+					q = queue_enqueue(q, b);
+				}
+			}
+			p = dlist_next(neighbours, p);
+		}
+	}
+
+	return false;
 }
-
 
 /**
  * @brief Find position of first non-whitespace character.
