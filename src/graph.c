@@ -54,6 +54,7 @@ void int_kill(void *p) {
 	free(i);
 }
 
+
 // Functions in graph.h
 
 bool nodes_are_equal(const node *n1, const node *n2) {
@@ -84,13 +85,14 @@ graph *graph_insert_node(graph *g, const char *s) {
 		fprintf(stderr, "FAIL: Can't have more than %d nodes in the graph", array_1d_high(g->nodes) + 1);
 		return g;
 	}
-	// Create a new node
+	// Create a new node 
 	node *n = malloc(sizeof(*n));
 
-	// fixes segfault from strcpy
-	n->name = malloc(100 * sizeof(char));
-	// gives segfault, without allocation for the name
-	strcpy(n->name, s);
+	// Allocate name string of correct size
+	int name_len = strlen(s);
+
+	n->name = malloc(name_len * sizeof(*(n->name)));
+	strncpy(n->name, s, name_len);
 	n->is_seen = false;
 
 	// Add the node to the last available index
