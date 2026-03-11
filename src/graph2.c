@@ -40,7 +40,7 @@ void node_kill(void *p) {
 }
 
 bool nodes_are_equal(const node *n1, const node *n2) {
-	return strcmp(n1->name, n2->name) == 0;
+	return strncmp(n1->name, n2->name,strlen(n1->name)) == 0;
 }
 
 graph *graph_empty(const int max_nodes) {
@@ -65,6 +65,7 @@ bool graph_has_edges(const graph *g) {
 graph *graph_insert_node(graph *g, const char *s) {
 	node *n = create_node(s);
 
+    printf("%d", g->max_nodes);
 	array_1d_set_value(g->nodes, n, g->amount_of_nodes);
 	g->amount_of_nodes++;
 
@@ -72,10 +73,9 @@ graph *graph_insert_node(graph *g, const char *s) {
 }
 
 node *graph_find_node(const graph *g, const char *s) {
-
-	for (int i = 0; i < g->max_nodes; i++) {
+	for (int i = 0; i < g->amount_of_nodes; i++) {
 		node *n = array_1d_inspect_value(g->nodes, i);
-		if (strcmp(n->name, s) == 0) {
+		if (strncmp(n->name, s, strlen(n->name)) == 0) {
 			return n;
 		}
 	}
