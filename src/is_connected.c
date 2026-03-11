@@ -66,6 +66,9 @@ int main(int argc, char *argv[]) {
 				}
 			}
 		}
+		else {
+			printf("Usage: AIRPORT1 AIRPORT2\n\n");
+		}
 	}
 
 	free(n1);
@@ -112,23 +115,28 @@ graph *load_graph(FILE *map_data) {
 			exit(EXIT_FAILURE);
 		}
 
-		// Read the current line and extract the route names
-		parse_map_line(buf, n1, n2);
-
-		// debug
-		printf("%s-%s\n", n1, n2);
-
-		// Only add the nodes if they aren't in the graph already
-		if (graph_find_node(g, n1) == NULL) {
-			graph_insert_node(g, n1);
+		if (line_is_blank(buf) || line_is_comment(buf)) {
+			i--;
 		}
-		if (graph_find_node(g, n2) == NULL) {
-			g = graph_insert_node(g, n2);
-		}
+		else {
+			// Read the current line and extract the route names
+			parse_map_line(buf, n1, n2);
 
-		// could do this differently and save the pointers above if found so we avoid doing find_node if on or
-		// more of the nodes already are in the graph
-		g = graph_insert_edge(g, graph_find_node(g, n1), graph_find_node(g, n2));
+			// debug
+			printf("%s-%s\n", n1, n2);
+
+			// Only add the nodes if they aren't in the graph already
+			if (graph_find_node(g, n1) == NULL) {
+				graph_insert_node(g, n1);
+			}
+			if (graph_find_node(g, n2) == NULL) {
+				g = graph_insert_node(g, n2);
+			}
+
+			// could do this differently and save the pointers above if found so we avoid doing find_node if on or
+			// more of the nodes already are in the graph
+			g = graph_insert_edge(g, graph_find_node(g, n1), graph_find_node(g, n2));
+		}
 	}
 
 	free(buf);
