@@ -24,9 +24,9 @@ struct graph {
 node *create_node(const char *name) {
 	node *n = calloc(1, sizeof(*n));
 
-    int len = strlen(name);
-    n->name = calloc(len, sizeof(n->name));
-    strncpy(n->name, name, len);
+	int len = strlen(name);
+	n->name = calloc(len, sizeof(n->name));
+	strncpy(n->name, name, len);
 	n->is_seen = false;
 	n->neighbours = dlist_empty(NULL);
 
@@ -34,13 +34,13 @@ node *create_node(const char *name) {
 }
 
 void node_kill(void *p) {
-    node *n = p;
+	node *n = p;
 	free(n->name);
 	dlist_kill(n->neighbours);
 }
 
 bool nodes_are_equal(const node *n1, const node *n2) {
-	return strncmp(n1->name, n2->name,strlen(n1->name)) == 0;
+	return strncmp(n1->name, n2->name, strlen(n1->name)) == 0;
 }
 
 graph *graph_empty(const int max_nodes) {
@@ -65,7 +65,6 @@ bool graph_has_edges(const graph *g) {
 graph *graph_insert_node(graph *g, const char *s) {
 	node *n = create_node(s);
 
-    printf("%d", g->max_nodes);
 	array_1d_set_value(g->nodes, n, g->amount_of_nodes);
 	g->amount_of_nodes++;
 
@@ -121,10 +120,10 @@ dlist *graph_neighbours(const graph *g, const node *n) {
 }
 
 void graph_kill(graph *g) {
-    for (int i = 0; i<g->amount_of_nodes; i++){
-        node *n = array_1d_inspect_value(g->nodes, i);
-        free(n);
-    }
+	for (int i = 0; i < g->amount_of_nodes; i++) {
+		node *n = array_1d_inspect_value(g->nodes, i);
+		free(n);
+	}
 	array_1d_kill(g->nodes);
 	free(g);
 }
