@@ -113,7 +113,7 @@ dlist *graph_neighbours(const graph *g, const node *n) {
 	while (!dlist_is_end(n->neighbours, n_pos)) {
 		dlist_insert(neighbours, dlist_inspect(n->neighbours, n_pos), dlist_first(neighbours));
 
-		dlist_next(n->neighbours, n_pos);
+		n_pos = dlist_next(n->neighbours, n_pos);
 	}
 
 	return neighbours;
