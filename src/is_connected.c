@@ -139,20 +139,20 @@ graph *load_graph(FILE *map_data) {
 
 int get_num_of_routes(FILE *map_data) {
 	// We assume that there will be no blank space before the number,
-	char string[100];
+	char buf[BUFSIZE];
 	int num = 0;
 
 	while (num == 0) {
-		if (fgets(string, BUFSIZE, map_data) == NULL) {
+		if (fgets(buf, BUFSIZE, map_data) == NULL) {
 			fprintf(stderr, "Input file doesnt follow the specification\n");
 			exit(EXIT_FAILURE);
 		}
 
 		// Checks if the first character in the string is a
 		// number representing the number of routes
-		if (string[0] >= '0' && string[0] <= '9') {
-			sscanf(string, "%d", &num);
-			printf("%s", string);
+		if (buf[0] >= '0' && buf[0] <= '9') {
+			sscanf(buf, "%d", &num);
+			printf("%s", buf);
 		}
 	}
 
@@ -183,6 +183,11 @@ bool find_path(graph *g, node *src, node *dest) {
 		while (!dlist_is_end(neighbours, p)) {
 			b = dlist_inspect(neighbours, p);
 
+			// need to change this when freeing memory
+			// possibly just use a flag so we
+			// can free the memory last and check
+			// if the flag is 1 and return true
+			// else return false
 			if (nodes_are_equal(b, dest)) {
 				return true;
 			}

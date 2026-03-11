@@ -58,7 +58,7 @@ target_include_directories(OU4_2
 
 if(APPLE)
     add_custom_command(TARGET OU4_2 POST_BUILD
-        COMMAND dsymutil $<TARGET_FILE:OU4> -o $<TARGET_FILE:OU4>.dSYM
+        COMMAND dsymutil $<TARGET_FILE:OU4_2> -o $<TARGET_FILE:OU4_2>.dSYM
         COMMENT "Generating dSYM bundle for debugging"
     )
 endif()
