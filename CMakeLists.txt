@@ -18,6 +18,8 @@ target_sources(OU4
             src/dlist.c
             src/array_2d.c
             src/array_1d.c
+            src/queue.c
+            src/list.c
             )
 target_include_directories(OU4
         PRIVATE
@@ -48,6 +50,8 @@ target_sources(OU4_2
             src/dlist.c
             src/array_2d.c
             src/array_1d.c
+            src/queue.c
+            src/list.c
             )
 target_include_directories(OU4_2
         PRIVATE
