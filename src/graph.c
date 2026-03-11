@@ -1,4 +1,14 @@
-// Test push
+/**
+ * @file graph.c
+ * @brief something something something...
+ *
+ * @authors: Otto Silander
+ *           Linus Scott
+ *           Helmer Nordström (ens24hnm@cs.umu.se)
+ *
+ * Version information:
+ *     v1.0 xxxx-xx-xx:
+ */
 
 #include <graph.h>
 #include <array_2d.h>

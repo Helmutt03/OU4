@@ -1,4 +1,13 @@
-/* Authors: Linus Scott, Helmer Nordström, Otto Silander
+/**
+ * @file graph2.c
+ * @brief something something something...
+ *
+ * @authors: Linus Scott
+ *           Helmer Nordström (ens24hnm@cs.umu.se)
+ *           Otto Silander
+ *
+ * Version information:
+ *     v1.0 xxxx-xx-xx:
  */
 
 #include <stdio.h>

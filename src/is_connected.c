@@ -1,3 +1,15 @@
+/**
+ * @file is_connected.c
+ * @brief something something something...
+ *
+ * @authors: Helmer Nordström (ens24hnm@cs.umu.se)
+ *           Otto Silander
+ *           Linus Scott
+ *
+ * Version information:
+ *     v1.0 xxxx-xx-xx:
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
