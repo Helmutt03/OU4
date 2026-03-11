@@ -49,7 +49,7 @@ graph *graph_empty(const int max_nodes) {
 	g->amount_of_nodes = 0;
 	g->max_nodes = max_nodes;
 
-	g->nodes = array_1d_create(0, max_nodes, NULL);
+	g->nodes = array_1d_create(0, max_nodes - 1, NULL);
 
 	return g;
 }
@@ -92,7 +92,7 @@ graph *graph_node_set_seen(graph *g, node *n, bool seen) {
 }
 
 graph *graph_reset_seen(graph *g) {
-	for (int i = 0; i < g->max_nodes; i++) {
+	for (int i = 0; i < g->amount_of_nodes; i++) {
 		node *n = array_1d_inspect_value(g->nodes, i);
 		n->is_seen = false;
 	}
@@ -113,7 +113,7 @@ dlist *graph_neighbours(const graph *g, const node *n) {
 	while (!dlist_is_end(n->neighbours, n_pos)) {
 		dlist_insert(neighbours, dlist_inspect(n->neighbours, n_pos), dlist_first(neighbours));
 
-		dlist_next(n->neighbours, n_pos);
+		n_pos = dlist_next(n->neighbours, n_pos);
 	}
 
 	return neighbours;

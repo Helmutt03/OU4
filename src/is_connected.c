@@ -170,6 +170,8 @@ bool find_path(graph *g, node *src, node *dest) {
 	queue *q = queue_enqueue(queue_empty(NULL), src);
 	node *n;
 	node *b;
+	dlist *neighbours = NULL;
+	dlist_pos p = NULL;
 
 	while (!queue_is_empty(q)) {
 
@@ -177,8 +179,8 @@ bool find_path(graph *g, node *src, node *dest) {
 		q = queue_dequeue(q);
 
 		// Get its neighbours
-		dlist *neighbours = graph_neighbours(g, n);
-		dlist_pos p = dlist_first(neighbours);
+		neighbours = graph_neighbours(g, n);
+		p = dlist_first(neighbours);
 
 		while (!dlist_is_end(neighbours, p)) {
 			b = dlist_inspect(neighbours, p);
@@ -200,6 +202,7 @@ bool find_path(graph *g, node *src, node *dest) {
 			p = dlist_next(neighbours, p);
 		}
 	}
+	dlist_kill(neighbours);
 
 	return false;
 }
