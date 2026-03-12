@@ -192,7 +192,7 @@ dlist *graph_neighbours(const graph *g, const node *n) {
 		fprintf(stderr, "Node not found, returning NULL");
 		return NULL;
 	}
-	dlist *neighbours = dlist_empty(node_kill);
+	dlist *neighbours = dlist_empty(NULL);
 
 	for (int i = 0; i < g->node_count; i++) {
 		int *is_neighbour = array_2d_inspect_value(g->neighbour_graph, node_index, i);

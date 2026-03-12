@@ -22,6 +22,7 @@
 #define MAXNODENAME 40
 #define BUFSIZE 400
 
+// Function declarations:
 void check_params(int argc, char *argv[], FILE **map_data);
 graph *load_graph(FILE *map_data);
 int get_num_of_routes(FILE *map_data);
@@ -33,33 +34,43 @@ bool line_is_blank(const char *s);
 bool line_is_comment(const char *s);
 int parse_map_line(const char *buf, char *n1, char *n2);
 
-
+/**
+ * @brief
+ *
+ * @param argc
+ * @param argv
+ * @return
+ */
 int main(int argc, char *argv[]) {
 
 	// Get the map data
 	FILE *map_data = NULL;
 	check_params(argc, argv, &map_data);
 
-	// load the graph structure with all routes
+	// Load the graph structure with all routes
 	graph *g = load_graph(map_data);
 
-	int quit = 0;
+	// Allocate memory and initialise variables
 	char *buf = malloc(BUFSIZE * sizeof(*buf));
 	char *n1 = malloc(MAXNODENAME * sizeof(*n1));
 	char *n2 = malloc(MAXNODENAME * sizeof(*n1));
 	node *src = NULL;
 	node *dest = NULL;
 
+	int quit = 0;
+
+	// Program loop
 	while (quit == 0) {
 
 		printf("Enter origin and destination (quit to exit): ");
-
 		fgets(buf, BUFSIZE, stdin);
 
+		// If user wants to exit
 		if (strncmp("quit", buf, 4) == 0) {
 			quit = 1;
 			printf("Normal exit.\n");
 		}
+		// if two words were read correcctly
 		else if (parse_map_line(buf, n1, n2) == 2) {
 
 			// if one or more of the inputs doesnt exist
@@ -67,31 +78,40 @@ int main(int argc, char *argv[]) {
 			if ((src = graph_find_node(g, n1)) == NULL || (dest = graph_find_node(g, n2)) == NULL) {
 				fprintf(stderr, "Please input correct airports\n\n");
 			}
+			// Try to find a path
 			else {
 				if (find_path(g, src, dest)) {
 					printf("There is a path from %s to %s\n\n", n1, n2);
-					graph_reset_seen(g);
 				}
+
 				else {
 					printf("There is no path from %s to %s\n\n", n1, n2);
-					graph_reset_seen(g);
 				}
 			}
 		}
+		// Wrong input
 		else {
 			printf("Usage: AIRPORT1 AIRPORT2\n\n");
 		}
 	}
 
+	// return all memory and close the file
 	free(n1);
 	free(n2);
 	free(buf);
-	free(g);
+	graph_kill(g);
 	fclose(map_data);
 
 	return 0;
 }
 
+/**
+ * @brief
+ *
+ * @param argc
+ * @param argv
+ * @param map_data
+ */
 void check_params(int argc, char *argv[], FILE **map_data) {
 
 	if (argc != 2) {
@@ -106,6 +126,12 @@ void check_params(int argc, char *argv[], FILE **map_data) {
 	}
 }
 
+/**
+ * @brief
+ *
+ * @param map_data
+ * @return
+ */
 graph *load_graph(FILE *map_data) {
 
 	// get the amount of routes to be loaded into the graph
@@ -145,8 +171,6 @@ graph *load_graph(FILE *map_data) {
 				g = graph_insert_node(g, n2);
 			}
 
-			// could do this differently and save the pointers above if found so we avoid doing find_node if on or
-			// more of the nodes already are in the graph
 			g = graph_insert_edge(g, graph_find_node(g, n1), graph_find_node(g, n2));
 		}
 	}
@@ -157,8 +181,14 @@ graph *load_graph(FILE *map_data) {
 	return g;
 }
 
+/**
+ * @brief
+ *
+ * @param map_data
+ * @return
+ */
 int get_num_of_routes(FILE *map_data) {
-	// We assume that there will be no blank space before the number,
+	// We assume that there will be no blank space before the number
 	char buf[BUFSIZE];
 	int num = 0;
 
@@ -179,21 +209,31 @@ int get_num_of_routes(FILE *map_data) {
 	return num;
 }
 
+/**
+ * @brief
+ *
+ * @param g
+ * @param src
+ * @param dest
+ * @return
+ */
 bool find_path(graph *g, node *src, node *dest) {
 
+	// There will always be a route to and from the same airport
 	if (nodes_are_equal(src, dest)) {
 		return true;
 	}
 
-
-	graph_node_set_seen(g, src, true);
+	// Breadth-first search
+	g = graph_node_set_seen(g, src, true);
 	queue *q = queue_enqueue(queue_empty(NULL), src);
 	node *n;
 	node *b;
 	dlist *neighbours = NULL;
 	dlist_pos p = NULL;
+	int found = 0;
 
-	while (!queue_is_empty(q)) {
+	while (!queue_is_empty(q) && found == 0) {
 
 		n = queue_front(q);
 		q = queue_dequeue(q);
@@ -205,13 +245,8 @@ bool find_path(graph *g, node *src, node *dest) {
 		while (!dlist_is_end(neighbours, p)) {
 			b = dlist_inspect(neighbours, p);
 
-			// need to change this when freeing memory
-			// possibly just use a flag so we
-			// can free the memory last and check
-			// if the flag is 1 and return true
-			// else return false
 			if (nodes_are_equal(b, dest)) {
-				return true;
+				found = 1;
 			}
 			else {
 				if (!graph_node_is_seen(g, b)) {
@@ -222,9 +257,20 @@ bool find_path(graph *g, node *src, node *dest) {
 			p = dlist_next(neighbours, p);
 		}
 	}
-	dlist_kill(neighbours);
 
-	return false;
+	// Free the memory for the dlist and queue
+	dlist_kill(neighbours);
+	queue_kill(q);
+
+	// Reset graph for next search
+	graph_reset_seen(g);
+
+	if (found == 1) {
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 /**
