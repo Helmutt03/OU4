@@ -33,8 +33,8 @@ struct graph {
 node *create_node(const char *name) {
 	node *n = calloc(1, sizeof(*n));
 
-	int len = strlen(name);
-	n->name = calloc(len, sizeof(n->name));
+	int len = strlen(name) + 1;
+	n->name = calloc(len, sizeof(*(n->name)));
 	strncpy(n->name, name, len);
 	n->is_seen = false;
 	n->neighbours = dlist_empty(NULL);
@@ -46,7 +46,7 @@ void node_kill(void *p) {
 	node *n = p;
 	free(n->name);
 	dlist_kill(n->neighbours);
-    free(n);
+	free(n);
 }
 
 bool nodes_are_equal(const node *n1, const node *n2) {
@@ -73,7 +73,7 @@ bool graph_has_edges(const graph *g) {
 }
 
 graph *graph_insert_node(graph *g, const char *s) {
-    
+
 	node *n = create_node(s);
 
 	array_1d_set_value(g->nodes, n, g->amount_of_nodes);

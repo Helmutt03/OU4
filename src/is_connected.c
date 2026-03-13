@@ -256,10 +256,11 @@ bool find_path(graph *g, node *src, node *dest) {
 			}
 			p = dlist_next(neighbours, p);
 		}
+		// free memory for neigbours
+		dlist_kill(neighbours);
 	}
 
-	// Free the memory for the dlist and queue
-	dlist_kill(neighbours);
+	// Free the memory for the queue
 	queue_kill(q);
 
 	// Reset graph for next search

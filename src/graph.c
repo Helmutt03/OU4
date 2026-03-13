@@ -99,7 +99,7 @@ graph *graph_insert_node(graph *g, const char *s) {
 	node *n = calloc(1, sizeof(*n));
 
 	// Allocate name string of correct size
-	int name_len = strlen(s);
+	int name_len = strlen(s) + 1;
 
 	n->name = calloc(name_len, sizeof(n->name));
 	strncpy(n->name, s, name_len);
@@ -150,7 +150,6 @@ graph *graph_insert_edge(graph *g, node *n1, node *n2) {
 	// Search the graph
 	for (int i = 0; i < g->node_count; i++) {
 		node *g_node = array_1d_inspect_value(g->nodes, i);
-        printf("%s-%s\n", g_node->name, n1->name);
 
 		if (nodes_are_equal(n1, g_node)) {
 			i1 = i;
