@@ -51,9 +51,9 @@ int main(int argc, char *argv[]) {
 	graph *g = load_graph(map_data);
 
 	// Allocate memory and initialise variables
-	char *buf = malloc(BUFSIZE * sizeof(*buf));
-	char *n1 = malloc(MAXNODENAME * sizeof(*n1));
-	char *n2 = malloc(MAXNODENAME * sizeof(*n1));
+	char *buf = calloc(BUFSIZE, sizeof(*buf));
+	char *n1 = calloc(MAXNODENAME, sizeof(*n1));
+	char *n2 = calloc(MAXNODENAME, sizeof(*n1));
 	node *src = NULL;
 	node *dest = NULL;
 
@@ -140,9 +140,9 @@ graph *load_graph(FILE *map_data) {
 	// Every route will have two nodes
 	graph *g = graph_empty(num_of_routes * 2);
 
-	char *buf = malloc(BUFSIZE * sizeof(*buf));
-	char *n1 = malloc(MAXNODENAME * sizeof(*n1));
-	char *n2 = malloc(MAXNODENAME * sizeof(*n2));
+	char *buf = calloc(BUFSIZE, sizeof(*buf));
+	char *n1 = calloc(MAXNODENAME, sizeof(*n1));
+	char *n2 = calloc(MAXNODENAME, sizeof(*n2));
 
 	for (int i = 1; i <= num_of_routes; i++) {
 

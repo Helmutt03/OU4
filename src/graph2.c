@@ -46,6 +46,7 @@ void node_kill(void *p) {
 	node *n = p;
 	free(n->name);
 	dlist_kill(n->neighbours);
+    free(n);
 }
 
 bool nodes_are_equal(const node *n1, const node *n2) {
@@ -72,6 +73,7 @@ bool graph_has_edges(const graph *g) {
 }
 
 graph *graph_insert_node(graph *g, const char *s) {
+    
 	node *n = create_node(s);
 
 	array_1d_set_value(g->nodes, n, g->amount_of_nodes);
@@ -131,7 +133,7 @@ dlist *graph_neighbours(const graph *g, const node *n) {
 void graph_kill(graph *g) {
 	for (int i = 0; i < g->amount_of_nodes; i++) {
 		node *n = array_1d_inspect_value(g->nodes, i);
-		free(n);
+		node_kill(n);
 	}
 	array_1d_kill(g->nodes);
 	free(g);

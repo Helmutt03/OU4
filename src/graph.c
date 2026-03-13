@@ -68,11 +68,11 @@ void int_kill(void *p) {
 // Functions in graph.h
 
 bool nodes_are_equal(const node *n1, const node *n2) {
-	return strcmp(n1->name, n2->name) == 0;
+	return strncmp(n1->name, n2->name, strlen(n2->name)) == 0;
 }
 
 graph *graph_empty(int max_nodes) {
-	graph *g = malloc(sizeof(*g));
+	graph *g = calloc(1, sizeof(*g));
 
 	g->node_count = 0;
 	g->edge_count = 0;
@@ -96,12 +96,12 @@ graph *graph_insert_node(graph *g, const char *s) {
 		return g;
 	}
 	// Create a new node
-	node *n = malloc(sizeof(*n));
+	node *n = calloc(1, sizeof(*n));
 
 	// Allocate name string of correct size
 	int name_len = strlen(s);
 
-	n->name = malloc(name_len * sizeof(*(n->name)));
+	n->name = calloc(name_len, sizeof(n->name));
 	strncpy(n->name, s, name_len);
 	n->is_seen = false;
 
@@ -116,7 +116,7 @@ node *graph_find_node(const graph *g, const char *s) {
 	// Go through the nodes and look for a match
 	for (int i = 0; i < g->node_count; i++) {
 		node *n = array_1d_inspect_value(g->nodes, i);
-		if (!strcmp(s, n->name)) {
+		if (!strncmp(s, n->name, strlen(s))) {
 			return (n);
 		}
 	}
@@ -150,6 +150,7 @@ graph *graph_insert_edge(graph *g, node *n1, node *n2) {
 	// Search the graph
 	for (int i = 0; i < g->node_count; i++) {
 		node *g_node = array_1d_inspect_value(g->nodes, i);
+        printf("%s-%s\n", g_node->name, n1->name);
 
 		if (nodes_are_equal(n1, g_node)) {
 			i1 = i;
@@ -166,7 +167,7 @@ graph *graph_insert_edge(graph *g, node *n1, node *n2) {
 	}
 
 	// Allocate an integer
-	int *edge = malloc(sizeof(*edge));
+	int *edge = calloc(1, sizeof(*edge));
 	*edge = 1;
 
 	// Insert the edge
