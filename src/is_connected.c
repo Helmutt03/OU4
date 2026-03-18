@@ -56,7 +56,6 @@ int parse_map_line(const char *buf, char *n1, char *n2);
  */
 int main(int argc, char *argv[]) {
 
-	fprintf(stderr, "hej\n");
 	// Get the map data
 	FILE *map_data = NULL;
 	check_params(argc, argv, &map_data);
@@ -140,7 +139,7 @@ void check_params(int argc, char *argv[], FILE **map_data) {
 
 	// Open the file for reading
 	*map_data = fopen(argv[1], "r");
-	if (map_data == NULL) {
+	if (*map_data == NULL) {
 		fprintf(stderr, "Could not open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
