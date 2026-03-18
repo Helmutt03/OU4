@@ -15,7 +15,7 @@
  *           Linus Scott
  *
  * Version information:
- *     v1.0 xxxx-xx-xx:
+ *     v1.0 2026-03-16:
  */
 
 #include <stdio.h>
@@ -56,6 +56,7 @@ int parse_map_line(const char *buf, char *n1, char *n2);
  */
 int main(int argc, char *argv[]) {
 
+	fprintf(stderr, "hej\n");
 	// Get the map data
 	FILE *map_data = NULL;
 	check_params(argc, argv, &map_data);
