@@ -167,12 +167,12 @@ graph *graph_insert_edge(graph *g, node *n1, node *n2) {
 
 	// Make sure the edge isn't already in the graph
 	int *edge = array_2d_inspect_value(g->neighbour_graph, i1, i2);
-	if(edge != NULL && *edge == 1){
+	if (edge != NULL && *edge == 1) {
 		return g;
 	}
 
 	// Allocate an integer
-	*edge = calloc(1, sizeof(*edge));
+	edge = calloc(1, sizeof(*edge));
 	*edge = 1;
 
 	// Insert the edge
