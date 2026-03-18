@@ -172,7 +172,7 @@ graph *graph_insert_edge(graph *g, node *n1, node *n2) {
 	}
 
 	// Allocate an integer
-	int *edge = calloc(1, sizeof(*edge));
+	*edge = calloc(1, sizeof(*edge));
 	*edge = 1;
 
 	// Insert the edge
