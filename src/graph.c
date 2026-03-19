@@ -2,8 +2,8 @@
  * @file graph.c
  * @brief something something something...
  *
- * @authors: Otto Silander
- *           Linus Scott
+ * @authors: Otto Silander    (c25osr@cs.umu.se)
+ *           Linus Scott      (ens24lst@cs.umu.se)
  *           Helmer Nordström (ens24hnm@cs.umu.se)
  *
  * Version information:
