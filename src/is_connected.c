@@ -15,7 +15,7 @@
  *           Linus Scott
  *
  * Version information:
- *     v1.0 2026-03-16:
+ *     v1.0 2026-03-19: First public submission
  */
 
 #include <stdio.h>
@@ -262,6 +262,8 @@ bool find_path(graph *g, node *src, node *dest) {
 	}
 
 	// Breadth-first search
+
+	// Set src seen
 	g = graph_node_set_seen(g, src, true);
 	// Add the src node first in the queue
 	queue *q = queue_enqueue(queue_empty(NULL), src);
