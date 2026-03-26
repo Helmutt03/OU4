@@ -1,13 +1,15 @@
 /**
  * @file graph2.c
- * @brief something something something...
+ * @brief An implementation of the abstract datatype graph 
+ *        where the data is stored as a field of nodes containing 
+ *        list of neighbours.
  *
  * @authors: Linus Scott      (ens24lst@cs.umu.se)
  *           Helmer Nordström (ens24hnm@cs.umu.se)
  *           Otto Silander    (c25osr@cs.umu.se)
  *
  * Version information:
- *     v1.0 xxxx-xx-xx:
+ *     v1.0 2026-03-19: First public submission
  */
 
 #include <stdio.h>
