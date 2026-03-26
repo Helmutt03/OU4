@@ -184,7 +184,10 @@ graph *load_graph(FILE *map_data) {
 		}
 		else {
 			// Read the current line and extract the route names
-			parse_map_line(buf, n1, n2);
+			if (parse_map_line(buf, n1, n2) != 2) {
+				fprintf(stderr, "Input file doesnt follow the specification\n");
+				exit(EXIT_FAILURE);
+			}
 
 			// Only add the nodes if they aren't in the graph already
 			if (graph_find_node(g, n1) == NULL) {
