@@ -85,8 +85,7 @@ void int_kill(void *p) {
  */
 
 bool nodes_are_equal(const node *n1, const node *n2) {
-	// Added + 1 to the string length to prevent it from giving a false positive
-	return strncmp(n1->name, n2->name, strlen(n2->name) + 1) == 0;
+	return strcmp(n1->name, n2->name) == 0;
 }
 
 /**
@@ -175,7 +174,7 @@ node *graph_find_node(const graph *g, const char *s) {
 	for (int i = 0; i < g->node_count; i++) {
 		node *n = array_1d_inspect_value(g->nodes, i);
 		// Added + 1 to the string length to prevent it from giving a false positive
-		if (!strncmp(s, n->name, strlen(s) + 1)) {
+		if (!strcmp(s, n->name)) {
 			return (n);
 		}
 	}
