@@ -34,6 +34,12 @@ struct graph {
 	array_2d *neighbour_graph;
 };
 
+/**
+ * Contains a string for the nodes name
+ * and a bool to keep track of its seen status
+ * during traversal of the graph
+ */
+
 struct node {
 	char *name;
 	bool is_seen;
@@ -79,7 +85,8 @@ void int_kill(void *p) {
  */
 
 bool nodes_are_equal(const node *n1, const node *n2) {
-	return strncmp(n1->name, n2->name, strlen(n2->name)) == 0;
+	// Added + 1 to the string length to prevent it from giving a false positive
+	return strncmp(n1->name, n2->name, strlen(n2->name) + 1) == 0;
 }
 
 /**
@@ -135,7 +142,7 @@ bool graph_has_edges(const graph *g) {
 graph *graph_insert_node(graph *g, const char *s) {
 
 	if (g->node_count >= array_1d_high(g->nodes) + 1) {
-		fprintf(stderr, "FAIL: Can't have more than %d nodes in the graph", array_1d_high(g->nodes) + 1);
+		// Too many nodes, do nothing
 		return g;
 	}
 	// Create a new node
@@ -167,7 +174,8 @@ node *graph_find_node(const graph *g, const char *s) {
 	// Go through the nodes and look for a match
 	for (int i = 0; i < g->node_count; i++) {
 		node *n = array_1d_inspect_value(g->nodes, i);
-		if (!strncmp(s, n->name, strlen(s))) {
+		// Added + 1 to the string length to prevent it from giving a false positive
+		if (!strncmp(s, n->name, strlen(s) + 1)) {
 			return (n);
 		}
 	}
@@ -247,7 +255,7 @@ graph *graph_insert_edge(graph *g, node *n1, node *n2) {
 
 	// Do nothing if n1 or n2 are not found in the graph
 	if (i1 == -1 || i2 == -1) {
-		fprintf(stderr, "One or more node not found, graph is not changed.\n");
+		// Nodes not found, do nothing 
 		return g;
 	}
 
@@ -290,7 +298,7 @@ dlist *graph_neighbours(const graph *g, const node *n) {
 
 
 	if (node_index == -1) {
-		fprintf(stderr, "Node not found, returning NULL");
+		// Node not found
 		return NULL;
 	}
 	dlist *neighbours = dlist_empty(NULL);
