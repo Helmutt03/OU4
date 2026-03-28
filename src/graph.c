@@ -37,7 +37,10 @@ struct graph {
 /**
  * Contains a string for the nodes name
  * and a bool to keep track of its seen status
- * during traversal of the graph
+ * during traversal of the graph.
+ * 
+ * The name is used to differentiate the nodes
+ * from each other
  */
 
 struct node {
