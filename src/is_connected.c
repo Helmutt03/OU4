@@ -184,7 +184,10 @@ graph *load_graph(FILE *map_data) {
 		}
 		else {
 			// Read the current line and extract the route names
-			parse_map_line(buf, n1, n2);
+			if (parse_map_line(buf, n1, n2) != 2) {
+				fprintf(stderr, "Input file doesnt follow the specification\n");
+				exit(EXIT_FAILURE);
+			}
 
 			// Only add the nodes if they aren't in the graph already
 			if (graph_find_node(g, n1) == NULL) {
@@ -255,22 +258,13 @@ int get_num_of_routes(FILE *map_data) {
  * @return true if we can reach dest from src, false if we cannot
  */
 bool find_path(graph *g, node *src, node *dest) {
-
 	// There will always be a route to and from the same airport
 	if (nodes_are_equal(src, dest)) {
 		return true;
 	}
-
-	// Breadth-first search
-
-	// Set src seen
+	// Set src seen and add it first in the queue
 	g = graph_node_set_seen(g, src, true);
-	// Add the src node first in the queue
 	queue *q = queue_enqueue(queue_empty(NULL), src);
-	node *n;
-	node *b;
-	dlist *neighbours = NULL;
-	dlist_pos p = NULL;
 	int found = 0;
 
 	// Loop through all nodes reachable via src or until we have found dest
@@ -278,18 +272,17 @@ bool find_path(graph *g, node *src, node *dest) {
 
 		// Get the node first in the queue,
 		// delete it from the queue
-		n = queue_front(q);
+		node *n = queue_front(q);
 		q = queue_dequeue(q);
 
 		// Get its neighbours
-		neighbours = graph_neighbours(g, n);
-		p = dlist_first(neighbours);
+		dlist *neighbours = graph_neighbours(g, n);
+		dlist_pos p = dlist_first(neighbours);
 
 		// Loop over the neighbours until it we either find
 		// the destination or we run out of neighbours
 		while (!dlist_is_end(neighbours, p) && found == 0) {
-			b = dlist_inspect(neighbours, p);
-
+			node *b = dlist_inspect(neighbours, p);
 			if (nodes_are_equal(b, dest)) {
 				// Update the flag to end the loop
 				found = 1;
@@ -309,19 +302,11 @@ bool find_path(graph *g, node *src, node *dest) {
 		dlist_kill(neighbours);
 	}
 
-	// Free the memory for the queue
+	// Free the memory for the queue and reset graph
 	queue_kill(q);
-
-	// Reset graph for next search
 	graph_reset_seen(g);
-
 	// Return the results
-	if (found == 1) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return (found == 1);
 }
 
 /**

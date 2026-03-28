@@ -1,13 +1,15 @@
 /**
  * @file graph.c
- * @brief something something something...
+ * @brief An implementation of the abstract datatype graph 
+ *        where the data is stored as an array of nodes and a
+ * 		  neighbour graph containing the edges
  *
  * @authors: Otto Silander    (c25osr@cs.umu.se)
  *           Linus Scott      (ens24lst@cs.umu.se)
  *           Helmer Nordström (ens24hnm@cs.umu.se)
  *
  * Version information:
- *     v1.0 xxxx-xx-xx:
+ *     v1.0 2026-03-19: First public version
  */
 
 #include <graph.h>
@@ -31,6 +33,12 @@ struct graph {
 	array_1d *nodes;
 	array_2d *neighbour_graph;
 };
+
+/**
+ * Contains a string for the nodes name
+ * and a bool to keep track of its seen status
+ * during traversal of the graph
+ */
 
 struct node {
 	char *name;
@@ -67,9 +75,25 @@ void int_kill(void *p) {
 
 // Functions in graph.h
 
+/**
+ * nodes_are_equal() - Check whether two nodes are equal.
+ * @n1: Pointer to node 1.
+ * @n2: Pointer to node 2.
+ *
+ * Returns: true if the nodes are considered equal, otherwise false.
+ *
+ */
+
 bool nodes_are_equal(const node *n1, const node *n2) {
-	return strncmp(n1->name, n2->name, strlen(n2->name)) == 0;
+	return strcmp(n1->name, n2->name) == 0;
 }
+
+/**
+ * graph_empty() - Create an empty graph.
+ * @max_nodes: The maximum number of nodes the graph can hold.
+ *
+ * Returns: A pointer to the new graph.
+ */
 
 graph *graph_empty(int max_nodes) {
 	graph *g = calloc(1, sizeof(*g));
@@ -81,18 +105,43 @@ graph *graph_empty(int max_nodes) {
 	return g;
 }
 
+/**
+ * graph_is_empty() - Check if a graph is empty, i.e. has no nodes.
+ * @g: Graph to check.
+ *
+ * Returns: True if graph is empty, otherwise false.
+ */
+
 bool graph_is_empty(const graph *g) {
 	return g->node_count == 0;
 }
+
+/**
+ * graph_has_edges() - Check if a graph has any edges.
+ * @g: Graph to check.
+ *
+ * Returns: True if graph has any edges, otherwise false.
+ */
 
 bool graph_has_edges(const graph *g) {
 	return g->edge_count == 0;
 }
 
+/**
+ * graph_insert_node() - Inserts a node with the given name into the graph.
+ * @g: Graph to manipulate.
+ * @s: Node name.
+ *
+ * Creates a new node with a copy of the given name and puts it into
+ * the graph.
+ *
+ * Returns: The modified graph.
+ */
+
 graph *graph_insert_node(graph *g, const char *s) {
 
 	if (g->node_count >= array_1d_high(g->nodes) + 1) {
-		fprintf(stderr, "FAIL: Can't have more than %d nodes in the graph", array_1d_high(g->nodes) + 1);
+		// Too many nodes, do nothing
 		return g;
 	}
 	// Create a new node
@@ -112,11 +161,20 @@ graph *graph_insert_node(graph *g, const char *s) {
 	return g;
 }
 
+/**
+ * graph_find_node() - Find a node stored in the graph.
+ * @g: Graph to manipulate.
+ * @s: Node identifier, e.g. a char *.
+ *
+ * Returns: A pointer to the found node, or NULL.
+ */
+
 node *graph_find_node(const graph *g, const char *s) {
 	// Go through the nodes and look for a match
 	for (int i = 0; i < g->node_count; i++) {
 		node *n = array_1d_inspect_value(g->nodes, i);
-		if (!strncmp(s, n->name, strlen(s))) {
+		// Added + 1 to the string length to prevent it from giving a false positive
+		if (!strcmp(s, n->name)) {
 			return (n);
 		}
 	}
@@ -125,14 +183,38 @@ node *graph_find_node(const graph *g, const char *s) {
 	return NULL;
 }
 
+/**
+ * graph_node_is_seen() - Return the seen status for a node.
+ * @g: Graph storing the node.
+ * @n: Node in the graph to return seen status for.
+ *
+ * Returns: The seen status for the node.
+ */
+
 bool graph_node_is_seen(const graph *g, const node *n) {
 	return n->is_seen;
 }
+
+/**
+ * graph_node_set_seen() - Set the seen status for a node.
+ * @g: Graph storing the node.
+ * @n: Node in the graph to set seen status for.
+ * @s: Status to set.
+ *
+ * Returns: The modified graph.
+ */
 
 graph *graph_node_set_seen(graph *g, node *n, bool seen) {
 	n->is_seen = seen;
 	return g;
 }
+
+/**
+ * graph_reset_seen() - Reset the seen status on all nodes in the graph.
+ * @g: Graph to modify.
+ *
+ * Returns: The modified graph.
+ */
 
 graph *graph_reset_seen(graph *g) {
 	for (int i = 0; i < g->node_count; i++) {
@@ -143,6 +225,17 @@ graph *graph_reset_seen(graph *g) {
 
 	return g;
 }
+
+/**
+ * graph_insert_edge() - Insert an edge into the graph.
+ * @g: Graph to manipulate.
+ * @n1: Source node (pointer) for the edge.
+ * @n2: Destination node (pointer) for the edge.
+ *
+ * NOTE: Undefined unless both nodes are already in the graph.
+ *
+ * Returns: The modified graph.
+ */
 
 graph *graph_insert_edge(graph *g, node *n1, node *n2) {
 	// Indexes in the array for the nodes, -1 if not found
@@ -161,7 +254,7 @@ graph *graph_insert_edge(graph *g, node *n1, node *n2) {
 
 	// Do nothing if n1 or n2 are not found in the graph
 	if (i1 == -1 || i2 == -1) {
-		fprintf(stderr, "One or more node not found, graph is not changed.\n");
+		// Nodes not found, do nothing 
 		return g;
 	}
 
@@ -181,6 +274,15 @@ graph *graph_insert_edge(graph *g, node *n1, node *n2) {
 	return g;
 }
 
+/**
+ * graph_neighbours() - Return a list of neighbour nodes.
+ * @g: Graph to inspect.
+ * @n: Node to get neighbours for.
+ *
+ * Returns: A pointer to a list of nodes. Note: The list must be
+ * dlist_kill()-ed after use.
+ */
+
 dlist *graph_neighbours(const graph *g, const node *n) {
 	// Find the node index, -1 is not found
 	int node_index = -1;
@@ -195,7 +297,7 @@ dlist *graph_neighbours(const graph *g, const node *n) {
 
 
 	if (node_index == -1) {
-		fprintf(stderr, "Node not found, returning NULL");
+		// Node not found
 		return NULL;
 	}
 	dlist *neighbours = dlist_empty(NULL);
@@ -210,6 +312,15 @@ dlist *graph_neighbours(const graph *g, const node *n) {
 	}
 	return neighbours;
 }
+
+/**
+ * graph_kill() - Destroy a given graph.
+ * @g: Graph to destroy.
+ *
+ * Return all dynamic memory used by the graph.
+ *
+ * Returns: Nothing.
+ */
 
 void graph_kill(graph *g) {
 	array_1d_kill(g->nodes);

@@ -9,7 +9,7 @@
  *           Otto Silander    (c25osr@cs.umu.se)
  *
  * Version information:
- *     v1.0 2026-03-19:
+ *     v1.0 2026-03-19: First public submission
  */
 
 #include <stdio.h>
