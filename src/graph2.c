@@ -23,6 +23,9 @@
 /**
  * Uses a directed list to store pointers 
  * to each neighbouring node
+ * 
+ * Name is uniqe differenciates each node 
+ * is_seen is used when traversing the graph
  */
 struct node {
 	char *name;
@@ -34,6 +37,9 @@ struct node {
 /**
  * Uses an array1d to store every node in the graph.
  * 
+ * Amount_of_nodes is current amount of nodes in graph
+ * Amount_of_edges is current amount of edges in graph
+ * Max_nodes is the maximum amount of nodes allowed in the graph
  */
 struct graph {
 	int amount_of_nodes;
@@ -85,6 +91,9 @@ void node_kill(void *p) {
  *
  */
 bool nodes_are_equal(const node *n1, const node *n2) {
+    if(strlen(n1->name) != strlen(n2->name)){
+        return false;
+    }
 	return strncmp(n1->name, n2->name, strlen(n1->name)) == 0;
 }
 
@@ -157,7 +166,9 @@ node *graph_find_node(const graph *g, const char *s) {
 		node *n = array_1d_inspect_value(g->nodes, i);
 
         //Checks if node names are the same
-		if (strncmp(n->name, s, strlen(n->name)) == 0) {
+
+
+		if (strlen(n->name) != strlen(s) && strncmp(n->name, s, strlen(n->name)) == 0) {
 			return n;
 		}
 	}
