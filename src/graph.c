@@ -9,7 +9,9 @@
  *           Helmer Nordström (ens24hnm@cs.umu.se)
  *
  * Version information:
- *     v1.0 2026-03-19: First public version
+ *     	v1.0 2026-03-19: First public version
+ * 		v1.1 2026-05-07: Removed unnecessary print and
+ * 						added strcmp instead of strncmp
  */
 
 #include <graph.h>
