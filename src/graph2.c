@@ -9,7 +9,8 @@
  *           Otto Silander    (c25osr@cs.umu.se)
  *
  * Version information:
- *     v1.0 2026-03-19: First public submission
+ *     	v1.0 2026-03-19: First public submission
+ * 		v1.1 2026-05-07: Corrected string compare functions 
  */
 
 #include <stdio.h>
