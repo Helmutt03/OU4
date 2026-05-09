@@ -16,6 +16,7 @@
  *
  * Version information:
  *     v1.0 2026-03-19: First public submission
+ *     v1.1 2026-05-09: Corrected file validation and shortened find_path()
  */
 
 #include <stdio.h>
