@@ -1,7 +1,7 @@
 /**
  * @file graph2.c
- * @brief An implementation of the abstract datatype graph 
- *        where the data is stored as a field of nodes containing 
+ * @brief An implementation of the abstract datatype graph
+ *        where the data is stored as a field of nodes containing
  *        list of neighbours.
  *
  * @authors: Linus Scott      (ens24lst@cs.umu.se)
@@ -10,7 +10,7 @@
  *
  * Version information:
  *     	v1.0 2026-03-19: First public submission
- * 		v1.1 2026-05-07: Corrected string compare functions 
+ * 		v1.1 2026-05-07: Corrected string compare functions
  */
 
 #include <stdio.h>
@@ -22,10 +22,10 @@
 
 
 /**
- * Uses a directed list to store pointers 
+ * Uses a directed list to store pointers
  * to each neighbouring node
- * 
- * Name is uniqe differenciates each node 
+ *
+ * Name is uniqe differenciates each node
  * is_seen is used when traversing the graph
  */
 struct node {
@@ -37,7 +37,7 @@ struct node {
 
 /**
  * Uses an array1d to store every node in the graph.
- * 
+ *
  * Amount_of_nodes is current amount of nodes in graph
  * Amount_of_edges is current amount of edges in graph
  * Max_nodes is the maximum amount of nodes allowed in the graph
@@ -53,9 +53,9 @@ struct graph {
 
 /**
  * create_node() - Creates a new node
- * 
+ *
  * @name: Name to give created node
- * 
+ *
  * Returns: Pointer to newly created node.
  */
 node *create_node(const char *name) {
@@ -73,7 +73,7 @@ node *create_node(const char *name) {
 /**
  * node_kill() - Frees memory used by a node.
  * @p: Pointer to node in void form.
- * 
+ *
  * Returns: Nothing
  */
 void node_kill(void *p) {
@@ -92,9 +92,9 @@ void node_kill(void *p) {
  *
  */
 bool nodes_are_equal(const node *n1, const node *n2) {
-    if(strlen(n1->name) != strlen(n2->name)){
-        return false;
-    }
+	if (strlen(n1->name) != strlen(n2->name)) {
+		return false;
+	}
 	return strncmp(n1->name, n2->name, strlen(n1->name)) == 0;
 }
 
@@ -162,14 +162,12 @@ graph *graph_insert_node(graph *g, const char *s) {
  * Returns: A pointer to the found node, or NULL.
  */
 node *graph_find_node(const graph *g, const char *s) {
-    //Loops through all nodes in graph g
+	// Loops through all nodes in graph g
 	for (int i = 0; i < g->amount_of_nodes; i++) {
 		node *n = array_1d_inspect_value(g->nodes, i);
 
-        //Checks if node names are the same
-
-
-		if (strlen(n->name) != strlen(s) && strncmp(n->name, s, strlen(n->name)) == 0) {
+		// Checks if node names are the same
+		if (strlen(n->name) == strlen(s) && strncmp(n->name, s, strlen(n->name)) == 0) {
 			return n;
 		}
 	}
@@ -208,7 +206,7 @@ graph *graph_node_set_seen(graph *g, node *n, bool seen) {
  * Returns: The modified graph.
  */
 graph *graph_reset_seen(graph *g) {
-    //Loops through all nodes in graph g
+	// Loops through all nodes in graph g
 	for (int i = 0; i < g->amount_of_nodes; i++) {
 		node *n = array_1d_inspect_value(g->nodes, i);
 		n->is_seen = false;
@@ -242,13 +240,13 @@ graph *graph_insert_edge(graph *g, node *n1, node *n2) {
  * dlist_kill()-ed after use.
  */
 dlist *graph_neighbours(const graph *g, const node *n) {
-    //Creates dlist to return.
+	// Creates dlist to return.
 	dlist *neighbours = dlist_empty(NULL);
 
-    //Makes sure that list in graph g and list to return are identical
+	// Makes sure that list in graph g and list to return are identical
 	dlist_pos n_pos = dlist_first(n->neighbours);
 
-    //Loops through list of neighbours
+	// Loops through list of neighbours
 	while (!dlist_is_end(n->neighbours, n_pos)) {
 		dlist_insert(neighbours, dlist_inspect(n->neighbours, n_pos), dlist_first(neighbours));
 
@@ -266,7 +264,7 @@ dlist *graph_neighbours(const graph *g, const node *n) {
  * Returns: Nothing.
  */
 void graph_kill(graph *g) {
-    //Loops through all nodes
+	// Loops through all nodes
 	for (int i = 0; i < g->amount_of_nodes; i++) {
 		node *n = array_1d_inspect_value(g->nodes, i);
 		node_kill(n);
